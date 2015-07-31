@@ -5,7 +5,7 @@ and model.
 
 """
 
-profiles = 3#{ "UKV2EGRR_cloud_frac": ["UKV2EGRR_HR", "UKV2EGRR_LR"], 
+profiles = { "UKV2EGRR_cloud_frac": ["UKV2EGRR_HR", "UKV2EGRR_LR"], 
              "UKV2EGRR_potential_temperature": ["UKV2EGRR_HR", "UKV2EGRR_LR"]}
 
 def getProfiles(model, variable):
