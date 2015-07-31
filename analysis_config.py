@@ -29,7 +29,7 @@ def binarySaturateClouds(c, cutoff):
 # profiles are namespaces which contain setting for different analysis types
 profiles = {
 
-"UKV2EGRR_LR": {"data_constraint": iris.Constraint(height_above_ground=lambda v: v.point < 5e3),
+"UKV2EGRR_LR": {"data_constraint": iris.Constraint(coord_values={"Specified height level above ground": lambda v: v.point < 5e3}),
                 "extent": [-13.62, 6.406, 47.924, 60.866],
                 "regrid_shape": [200, 200, 20],
                 "proc_fn": None,
@@ -38,7 +38,7 @@ profiles = {
                                      "-r", "20", "-c:v", "libtheora", "FILE_OUT"]
                 },
                 
-"UKV2EGRR_HR": {"data_constraint": iris.Constraint(height_above_ground=lambda v: v.point < 5e3),
+"UKV2EGRR_HR": {"data_constraint": iris.Constraint(coord_values={"Specified height level above ground": lambda v: v.point < 5e3}),
                 "extent": [-13.62, 6.406, 47.924, 60.866],
                 "regrid_shape": [400, 400, 35],
                 "proc_fn": None,
