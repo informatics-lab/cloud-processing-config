@@ -24,7 +24,15 @@ def binarySaturateClouds(c, cutoff):
     c.data[c.data<cutoff] = 0.0
     c.data[c.data>cutoff] = 1.0
 
-    return c    
+    return c
+
+def degrib_cb(c, f, n):
+    levc = c.coord("Specified height level above ground")
+    newc = iris.coords.DimCoord(levc.points, "height", long_name="level_height", units="m")
+    c.remove_coord("Specified height level above ground")
+    c.add_dim_coord(newc, 1)
+
+    return c
 
 # profiles are namespaces which contain setting for different analysis types
 profiles = {
