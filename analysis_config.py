@@ -31,8 +31,8 @@ def degrib_cb(c, f, n):
     levc = c.coord("level")
     levcdim, = c.coord_dims(levc)
     newc = iris.coords.DimCoord(levc.points, "height", long_name="level_height", units="m")
-    c.remove_coord("level")
-    c.add_dim_coord(newc, levcdim)
+    c.remove_coord(levc)
+    c.add_dim_coord(newc, levcdim) 
 
     return c
 
@@ -63,7 +63,7 @@ def ukv_cb(c, f, n):
 # profiles are namespaces which contain setting for different analysis types
 profiles = {
 
-"UKV2EGRR_LR": {"data_constraint": iris.Constraint(coord_values={"level_height": lambda v: v.point < 5e3}),
+"UKV2EGRR_LR": {"data_constraint": iris.Constraint(coord_values={"height": lambda v: v.point < 5e3}),
                 "extent": [-13.62, 6.406, 47.924, 60.866],
                 "regrid_shape": [200, 200, 20],
                 "proc_fn": None,
@@ -73,7 +73,7 @@ profiles = {
                                      "-r", "20", "-c:v", "libtheora", "FILE_OUT"]
                 },
                 
-"UKV2EGRR_HR": {"data_constraint": iris.Constraint(coord_values={"level_height": lambda v: v.point < 5e3}),
+"UKV2EGRR_HR": {"data_constraint": iris.Constraint(coord_values={"height": lambda v: v.point < 5e3}),
                 "extent": [-13.62, 6.406, 47.924, 60.866],
                 "regrid_shape": [400, 400, 35],
                 "proc_fn": None,
