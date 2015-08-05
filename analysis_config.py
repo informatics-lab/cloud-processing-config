@@ -27,6 +27,14 @@ def binarySaturateClouds(c, cutoff):
 
     return c
 
+def degrib_cb(c, f, n):
+    levc = c.coord("Specified height level above ground")
+    newc = iris.coords.DimCoord(levc.points, "height", long_name="level_height", units="m")
+    c.remove_coord("Specified height level above ground")
+    c.add_dim_coord(newc, 1)
+
+    return c
+
 def latlon2Dto1D_cb(c, f, n):
     latc = c.coord("latitude")
     newlatc = iris.coords.DimCoord(np.mean(latc.points, 1),
@@ -45,6 +53,12 @@ def latlon2Dto1D_cb(c, f, n):
 
     return c
 
+def ukv_cb(c, f, n):
+    c = latlon2Dto1D_cb(c, f, n)
+    c = degrib_cb(c, f, n)
+
+    return c
+
 # profiles are namespaces which contain setting for different analysis types
 profiles = {
 
@@ -52,7 +66,7 @@ profiles = {
                 "extent": [-13.62, 6.406, 47.924, 60.866],
                 "regrid_shape": [200, 200, 20],
                 "proc_fn": None,
-                "load_call_back": latlon2Dto1D_cb,
+                "load_call_back": ukv_cb,
                 "video_ending": "ogv",
                 "ffmpeg_args_template": ["ffmpeg", "-r", "20", "-i", "FILES_IN",
                                      "-r", "20", "-c:v", "libtheora", "FILE_OUT"]
@@ -62,7 +76,7 @@ profiles = {
                 "extent": [-13.62, 6.406, 47.924, 60.866],
                 "regrid_shape": [400, 400, 35],
                 "proc_fn": None,
-                "load_call_back": latlon2Dto1D_cb,
+                "load_call_back": ukv_cb,
                 "video_ending": "ogv",
                 "ffmpeg_args_template": ["ffmpeg", "-r", "20", "-i", "FILES_IN",
                                      "-r", "20", "-c:v", "libtheora", "FILE_OUT"]
