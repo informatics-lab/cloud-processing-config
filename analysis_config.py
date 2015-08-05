@@ -29,9 +29,10 @@ def binarySaturateClouds(c, cutoff):
 
 def degrib_cb(c, f, n):
     levc = c.coord("level")
+    levcdim, = c.coord_dims(levc)
     newc = iris.coords.DimCoord(levc.points, "height", long_name="level_height", units="m")
     c.remove_coord("level")
-    c.add_dim_coord(newc, 1)
+    c.add_dim_coord(newc, levcdim)
 
     return c
 
