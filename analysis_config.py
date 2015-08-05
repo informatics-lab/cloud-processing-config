@@ -1,5 +1,6 @@
 import iris
 import functools
+import numpy as np
 
 max_val = 255 # maximum data value (i.e. 8 bit uint)
 
@@ -26,11 +27,21 @@ def binarySaturateClouds(c, cutoff):
 
     return c
 
-def degrib_cb(c, f, n):
-    levc = c.coord("Specified height level above ground")
-    newc = iris.coords.DimCoord(levc.points, "height", long_name="level_height", units="m")
-    c.remove_coord("Specified height level above ground")
-    c.add_dim_coord(newc, 1)
+def latlon2Dto1D_cb(c, f, n):
+    latc = c.coord("latitude")
+    newlatc = iris.coords.DimCoord(np.mean(latc.points, 1),
+                                    standard_name="latitude", units="degrees")
+    lonc = c.coord("longitude")
+    newlonc = iris.coords.DimCoord(np.mean(lonc.points, 0),
+                                    standard_name="longitude", units="degrees")
+
+    c.remove_coord("latitude")
+    c.remove_coord("longitude")
+    c.remove_coord("x-coordinate in Cartesian system")
+    c.remove_coord("y-coordinate in Cartesian system")
+
+    c.add_dim_coord(newlatc, c.ndim-2)
+    c.add_dim_coord(newlonc, c.ndim-1)
 
     return c
 
@@ -41,7 +52,7 @@ profiles = {
                 "extent": [-13.62, 6.406, 47.924, 60.866],
                 "regrid_shape": [200, 200, 20],
                 "proc_fn": None,
-                "load_call_back": None,
+                "load_call_back": latlon2Dto1D_cb,
                 "video_ending": "ogv",
                 "ffmpeg_args_template": ["ffmpeg", "-r", "20", "-i", "FILES_IN",
                                      "-r", "20", "-c:v", "libtheora", "FILE_OUT"]
@@ -51,7 +62,7 @@ profiles = {
                 "extent": [-13.62, 6.406, 47.924, 60.866],
                 "regrid_shape": [400, 400, 35],
                 "proc_fn": None,
-                "load_call_back": None,
+                "load_call_back": latlon2Dto1D_cb,
                 "video_ending": "ogv",
                 "ffmpeg_args_template": ["ffmpeg", "-r", "20", "-i", "FILES_IN",
                                      "-r", "20", "-c:v", "libtheora", "FILE_OUT"]
