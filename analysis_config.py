@@ -34,6 +34,11 @@ def degrib_cb(c, f, n):
     c.remove_coord(levc)
     c.add_dim_coord(newc, levcdim) 
 
+    c.coord("time").rename("forecast_time")
+    frtc = iris.coords.AuxCoord.from_coord(d.coord("time")[0])
+    frtc.rename("forecast_reference_time")
+    c.add_aux_coord(frtc)
+
     return c
 
 def latlon2Dto1D_cb(c, f, n):
