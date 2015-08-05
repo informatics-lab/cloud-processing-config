@@ -34,8 +34,7 @@ def degrib_cb(c, f, n):
     c.remove_coord(levc)
     c.add_dim_coord(newc, levcdim) 
 
-    c.coord("time").rename("forecast_time")
-    frtc = iris.coords.AuxCoord.from_coord(c.coord("forecast_time")[0])
+    frtc = iris.coords.AuxCoord.from_coord(c.coord("time")[0])
     frtc.rename("forecast_reference_time")
     c.add_aux_coord(frtc)
 
