@@ -7,7 +7,7 @@ and model.
 
 runnames = {"umqvaa": {
                 "model": "UKV",
-                "variables": ["cloud_frac", "potential_temperature"],
+                "variables": ["cloud_volume_fraction_in_atmosphere_layer", "air_temperature"],
                 "profiles": "UKV2EGRR_HR"
                 }
             } 
