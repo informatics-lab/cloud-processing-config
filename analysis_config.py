@@ -82,7 +82,7 @@ profiles = {
                 "extent": [-13.62, 6.406, 47.924, 60.866],
                 "regrid_shape": [400, 400, 35],
                 "proc_fn": None,
-                "load_call_back": ukv_cb,
+                "load_call_back": None,
                 "video_ending": "ogv",
                 "ffmpeg_args_template": ["ffmpeg", "-r", "20", "-i", "FILES_IN",
                                      "-r", "20", "-c:v", "libtheora", "FILE_OUT"]
