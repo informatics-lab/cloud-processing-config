@@ -8,7 +8,7 @@ thredds_server = "http://ec2-52-16-245-62.eu-west-1.compute.amazonaws.com:8080/t
 img_data_server = "http://ec2-52-16-246-202.eu-west-1.compute.amazonaws.com:9000/molab-3dwx-ds/media/"
 vid_dest = "http://ec2-52-16-246-202.eu-west-1.compute.amazonaws.com:9000/molab-3dwx-ds/media/"
 
-topog_file = "http://ec2-52-16-245-62.eu-west-1.compute.amazonaws.com:8080/thredds/dodsC/testLab/global_dem.nc"
+topog_file = os.path.join(os.getenv("DATA_DIR"), "ukv_orog.pp")
 
 sea_level = 3 # minimum altitude number
 
