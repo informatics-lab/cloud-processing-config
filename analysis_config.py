@@ -5,9 +5,9 @@ import os
 
 max_val = 255 # maximum data value (i.e. 8 bit uint)
 
-thredds_server = "http://ec2-52-16-245-62.eu-west-1.compute.amazonaws.com:8080/thredds/dodsC/testLab/"
-img_data_server = "http://ec2-52-16-246-202.eu-west-1.compute.amazonaws.com:9000/molab-3dwx-ds/media/"
-vid_dest = "http://ec2-52-16-246-202.eu-west-1.compute.amazonaws.com:9000/molab-3dwx-ds/media/"
+thredds_server = "http://thredds.3dvis.informaticslab.co.uk/thredds/dodsC/testLab/"
+img_data_server = "http://data.3dvis.informaticslab.co.uk/molab-3dwx-ds/media/"
+vid_dest = img_data_server
 
 topog_file = os.path.join(os.getenv("DATA_DIR"), "ukv_orog.pp")
 
