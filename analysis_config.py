@@ -78,7 +78,7 @@ profiles = {
 #                                      "-r", "20", "-c:v", "libtheora", "FILE_OUT"]
 #                 },
                 
-"UKV2EGRR": {"data_constraint": iris.Constraint(coord_values={"height": lambda v: v.point < 5e3}),
+"UKV2EGRR": {"data_constraint": iris.Constraint(coord_values={"level_height": lambda v: v.point < 5e3}),
                 "extent": [-13.62, 6.406, 47.924, 60.866],
                 "regrid_shape": [400, 400, 35],
                 "proc_fn": None,
