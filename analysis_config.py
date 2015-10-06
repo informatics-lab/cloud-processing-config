@@ -41,6 +41,20 @@ def degrib_cb(c, f, n):
 
     return c
 
+def degrib_cb_london(c, f, n):
+    levc = c.coord("hybrid_ht")
+    levcdim, = c.coord_dims(levc)
+    newc = iris.coords.DimCoord(levc.points, "height", long_name="level_height", units="m")
+    c.remove_coord(levc)
+    c.add_dim_coord(newc, levcdim) 
+
+    c.coord("t").guess_bounds()
+    frtc = iris.coords.AuxCoord.from_coord(c.coord("t")[0])
+    frtc.rename("forecast_reference_time")
+    c.add_aux_coord(frtc)
+
+    return c
+
 def latlon2Dto1D_cb(c, f, n):
     latc = c.coord("latitude")
     newlatc = iris.coords.DimCoord(np.mean(latc.points, 1),
@@ -62,6 +76,12 @@ def latlon2Dto1D_cb(c, f, n):
 def ukv_cb(c, f, n):
     c = latlon2Dto1D_cb(c, f, n)
     c = degrib_cb(c, f, n)
+
+    return c
+
+def london_cb(c, f, n):
+    c = latlon2Dto1D_cb(c, f, n)
+    c = degrib_cb_london(c, f, n)
 
     return c
 
