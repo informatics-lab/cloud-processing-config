@@ -80,7 +80,6 @@ def ukv_cb(c, f, n):
     return c
 
 def london_cb(c, f, n):
-    c = latlon2Dto1D_cb(c, f, n)
     c = degrib_cb_london(c, f, n)
 
     return c
