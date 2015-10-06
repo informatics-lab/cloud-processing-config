@@ -44,7 +44,7 @@ def degrib_cb(c, f, n):
 def degrib_cb_london(c, f, n):
     levc = c.coord("hybrid_ht")
     levcdim, = c.coord_dims(levc)
-    newc = iris.coords.DimCoord(levc.points, "height", long_name="level_height", units="m")
+    newc = iris.coords.DimCoord(levc.points, "height", long_name="level_height", units="m", var_name="z")
     c.remove_coord(levc)
     c.add_dim_coord(newc, levcdim) 
 
