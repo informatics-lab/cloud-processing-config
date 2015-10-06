@@ -68,17 +68,17 @@ def ukv_cb(c, f, n):
 # profiles are namespaces which contain setting for different analysis types
 profiles = {
 
-"UKV2EGRR_LR": {"data_constraint": iris.Constraint(coord_values={"height": lambda v: v.point < 5e3}),
-                "extent": [-13.62, 6.406, 47.924, 60.866],
-                "regrid_shape": [200, 200, 20],
-                "proc_fn": None,
-                "load_call_back": ukv_cb,
-                "video_ending": "ogv",
-                "ffmpeg_args_template": ["ffmpeg", "-r", "20", "-i", "FILES_IN",
-                                     "-r", "20", "-c:v", "libtheora", "FILE_OUT"]
-                },
+# "UKV2EGRR_LR": {"data_constraint": iris.Constraint(coord_values={"height": lambda v: v.point < 5e3}),
+#                 "extent": [-13.62, 6.406, 47.924, 60.866],
+#                 "regrid_shape": [200, 200, 20],
+#                 "proc_fn": None,
+#                 "load_call_back": ukv_cb,
+#                 "video_ending": "ogv",
+#                 "ffmpeg_args_template": ["ffmpeg", "-r", "20", "-i", "FILES_IN",
+#                                      "-r", "20", "-c:v", "libtheora", "FILE_OUT"]
+#                 },
                 
-"UKV2EGRR_HR": {"data_constraint": iris.Constraint(coord_values={"height": lambda v: v.point < 5e3}),
+"UKV2EGRR": {"data_constraint": iris.Constraint(coord_values={"height": lambda v: v.point < 5e3}),
                 "extent": [-13.62, 6.406, 47.924, 60.866],
                 "regrid_shape": [400, 400, 35],
                 "proc_fn": None,
