@@ -1,6 +1,7 @@
 import iris
 import functools
 import numpy as np
+import os
 
 max_val = 255 # maximum data value (i.e. 8 bit uint)
 
