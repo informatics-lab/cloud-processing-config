@@ -7,7 +7,8 @@ max_val = 255 # maximum data value (i.e. 8 bit uint)
 
 thredds_server = "http://thredds.3dvis.informaticslab.co.uk/thredds/dodsC/testLab/"
 img_data_server = "http://data.3dvis.informaticslab.co.uk/molab-3dwx-ds/media/"
-vid_dest = img_data_server
+vid_data_server = img_data_server
+roothal = "http://data.3dvis.informaticslab.co.uk/molab-3dwx-ds/"
 
 topog_file = os.path.join(os.getenv("DATA_DIR"), "ukv_orog.pp")
 
