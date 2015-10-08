@@ -87,7 +87,7 @@ profiles = {
                 "load_call_back": None,
                 "video_ending": "ogv",
                 "ffmpeg_args_template": ["ffmpeg", "-r", "20", "-i", "FILES_IN",
-                                     "-r", "20", "-codec:v", "libtheora", "FILE_OUT"]
+                                     "-r", "20", "-codec", "libtheora", "FILE_OUT"]
                 }
 
 }
