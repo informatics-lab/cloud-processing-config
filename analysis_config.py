@@ -86,7 +86,7 @@ profiles = {
                 "proc_fn": None,
                 "load_call_back": None,
                 "video_ending": "ogv",
-                "ffmpeg_args_template": ["ffmpeg", "-r", "20", "-i", "FILES_IN",
+                "ffmpeg_args_template": ["ffmpeg", "-y", "-r", "20", "-i", "FILES_IN",
                                      "-r", "20", "-vcodec", "libtheora", "FILE_OUT"]
                 }
 
