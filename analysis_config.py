@@ -87,7 +87,7 @@ profiles = {
                 "load_call_back": None,
                 "video_ending": "ogv",
                 "ffmpeg_args_template": ["avconv", "-y", "-r", "1", "-i", "FILES_IN",
-                                     "-r", "1", "-vcodec", "libtheora", "-qscale:v", "3", "FILE_OUT"]
+                                     "-r", "1", "-vcodec", "libtheora", "-qscale:v", "5", "FILE_OUT"]
                 }
 
 }
