@@ -85,9 +85,9 @@ profiles = {
                 "regrid_shape": [400, 400, 35],
                 "proc_fn": None,
                 "load_call_back": None,
-                "video_ending": "mp4",
+                "video_ending": "ogv",
                 "ffmpeg_args_template": ["avconv", "-y", "-r", "1", "-i", "FILES_IN",
-                                     "-r", "1", "-vcodec", "mpeg4", "FILE_OUT"]
+                                     "-r", "1", "-vcodec", "libtheora", "-qscale:v", "3", "FILE_OUT"]
                 }
 
 }
