@@ -81,7 +81,7 @@ profiles = {
 #                 },
                 
 "UKV2EGRR": {"data_constraint": iris.Constraint(coord_values={"level_height": lambda v: v.point < 5e3}),
-                "extent": [-13.62, 6.406, 47.924, 60.866],
+                "extent": [-10.2, 2.4, 48.7, 59.2],
                 "regrid_shape": [400, 400, 35],
                 "proc_fn": None,
                 "load_call_back": None,
