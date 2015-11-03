@@ -10,7 +10,11 @@ img_data_server = "http://data.3dvis.informaticslab.co.uk/molab-3dwx-ds/media/"
 vid_data_server = img_data_server
 roothal = "http://data.3dvis.informaticslab.co.uk/molab-3dwx-ds/"
 
-topog_file = os.path.join(os.getenv("DATA_DIR"), "ukv_orog.pp")
+data_dir = os.getenv("DATA_DIR")
+if data_dir == None:
+    topog_file = None
+else:
+    topog_file = os.path.join(os.getenv("DATA_DIR"), "ukv_orog.pp")
 
 sea_level = 3 # minimum altitude number
 
